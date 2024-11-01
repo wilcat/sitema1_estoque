@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($usuario && password_verify($senha, $usuario['senha'])) {
         $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];  // Adiciona o tipo de usuário na sessão
 
         // Registrar log de acesso
         $stmt = $pdo->prepare("INSERT INTO logs_acesso (usuario_id, acao) VALUES (?, ?)");
         $stmt->execute([$usuario['id'], 'Login']);
 
         // Redirecionar para a página inicial
-
         header("Location: index.php");
         exit();
     } else {
@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
 <!-- Formulário de Login -->
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -45,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if(isset($_SESSION['erro'])) {
         echo "<p style='color:red'>".$_SESSION['erro']."</p>";
         unset($_SESSION['erro']);
+        
     }
     ?>
     <form method="POST" action="">

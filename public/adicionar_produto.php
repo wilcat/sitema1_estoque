@@ -36,7 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="descricao" required><br>
         <label>Quantidade:</label><br>
         <input type="number" name="quantidade" required><br><br>
+        <label>Estoque Minimo:</label><br>
+        <input type="number" name="estoque_minimo" required><br><br>
         <button type="submit">Adicionar</button>
+        
     </form>
     <?php include '../templates/footer.php'; ?>
 </body>

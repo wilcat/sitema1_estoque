@@ -18,6 +18,7 @@ require '../templates/auth.php';
         <li><a href="relatorios_acesso.php">Relatório de Acessos</a></li>
         <li><a href="relatorios_estoque.php">Relatório de Estoque</a></li>
         <li><a href="relatorios_material.php">Relatórios de Material</a></li>
+        <li><a href="relatorio_ordens.php">Relatórios de Ordem de Serviços</a></li>
     </ul>
     <?php include '../templates/footer.php'; ?>
 </body>

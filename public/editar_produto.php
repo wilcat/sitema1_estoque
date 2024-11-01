@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="text" name="descricao" value="<?= htmlspecialchars($produto['descricao']) ?>" required><br>
         <label>Quantidade:</label><br>
         <input type="number" name="quantidade" value="<?= htmlspecialchars($produto['quantidade']) ?>" required><br><br>
+        <label>Estoque Minimo:</label><br>
+        <input type="number" name="estoque_minimo" value="<?= htmlspecialchars($produto['estoque_minimo']) ?>" required><br><br>
         <button type="submit">Atualizar</button>
     </form>
     <?php include '../templates/footer.php'; ?>
