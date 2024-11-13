@@ -3,6 +3,8 @@
 require '../config/database.php';
 require '../templates/auth.php';
 
+$isAdmin = $_SESSION['tipo_usuario'] === 'admin';
+
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
 
@@ -21,10 +23,13 @@ if(isset($_GET['id'])) {
     if($usuario) {
         // Deletar usuário
         $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = ?");
+        $stmt->execute([$id]);
         if($stmt->execute([$id])) {
             // Registrar log de deleção de usuário
             $stmt_log = $pdo->prepare("INSERT INTO logs_acesso (usuario_id, acao) VALUES (?, ?)");
             $stmt_log->execute([$_SESSION['usuario_id'], "Você deletou o usuário: ".$usuario['nome']]);
+            $_SESSION['sucesso'] = "Usuário deletado com sucesso.";
+            
             header("Location: usuarios.php");
             exit();
         } else {

@@ -18,14 +18,14 @@ if(isset($_GET['id'])) {
             // Registrar log de deleção de produto
             $stmt_log = $pdo->prepare("INSERT INTO logs_acesso (usuario_id, acao) VALUES (?, ?)");
             $stmt_log->execute([$_SESSION['usuario_id'], "Deletou produto: ".$produto['descricao']]);
-
-            header("Location: produtos.php");
+            header('Location: ../index.php');
             exit();
-        } else {
+                        
+            } else {
             $_SESSION['erro'] = "Erro ao deletar produto.";
         }
     }
 }
-header("Location: produtos.php");
+header("Location: ../sistema1/produtos.php");
 exit();
 ?>
